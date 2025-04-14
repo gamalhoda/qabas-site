@@ -3,75 +3,58 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>لجنة دروس التقوية</title>
+  <title>📚 لجنة دروس التقوية</title>
   <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
   <header><h1>📚 لجنة دروس التقوية</h1></header>
-  <nav>
-    <a href="index.html">↩ العودة للرئيسية</a>
-  </nav>
+  <nav><a href="index.html">↩ العودة للرئيسية</a></nav>
   <main>
     <p class="note">🔐 يتم تعيين المسؤولة من قِبل الإدارة</p>
-    <section>
-      <h2>📌 المهام الدائمة</h2>
-      
-<table>
-  <tr>
-    <th>المهمة</th><th>المسؤولة</th><th>تاريخ البدء</th><th>تاريخ الانتهاء</th><th>الحالة</th><th>ملاحظات</th>
-  </tr>
-  <tr>
-    <td>مثال: مهمة توضيحية</td><td>هدى</td><td>01/05/2025</td><td>05/05/2025</td><td>جارية</td><td>-</td>
-  </tr>
-</table>
 
-    </section>
     <section>
-      <h2>📅 المهام الفصلية</h2>
-      
-<table>
-  <tr>
-    <th>المهمة</th><th>المسؤولة</th><th>تاريخ البدء</th><th>تاريخ الانتهاء</th><th>الحالة</th><th>ملاحظات</th>
-  </tr>
-  <tr>
-    <td>مثال: مهمة توضيحية</td><td>هدى</td><td>01/05/2025</td><td>05/05/2025</td><td>جارية</td><td>-</td>
-  </tr>
-</table>
-
+      <h2>📋 المهام</h2>
+      <table id="taskTable">
+        <thead>
+          <tr>
+            <th>المهمة</th>
+            <th>المسؤولة</th>
+            <th>تاريخ البدء</th>
+            <th>تاريخ الانتهاء</th>
+            <th>الحالة</th>
+            <th>ملاحظات</th>
+            <th>🗑️</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="form-row">
+        <input type="text" id="task" placeholder="المهمة">
+        <input type="text" id="person" placeholder="المسؤولة">
+        <input type="date" id="start">
+        <input type="date" id="end">
+        <select id="status">
+          <option>لم يبدأ</option>
+          <option>جارية</option>
+          <option>تم</option>
+        </select>
+        <input type="text" id="notes" placeholder="ملاحظات">
+        <button onclick="addTask()">➕ أضف</button>
+      </div>
     </section>
-    <section>
-      <h2>🗓️ المهام الأسبوعية</h2>
-      
-<table>
-  <tr>
-    <th>المهمة</th><th>المسؤولة</th><th>تاريخ البدء</th><th>تاريخ الانتهاء</th><th>الحالة</th><th>ملاحظات</th>
-  </tr>
-  <tr>
-    <td>مثال: مهمة توضيحية</td><td>هدى</td><td>01/05/2025</td><td>05/05/2025</td><td>جارية</td><td>-</td>
-  </tr>
-</table>
 
-    </section>
-    <section>
-      <h2>🧭 المهام السنوية</h2>
-      
-<table>
-  <tr>
-    <th>المهمة</th><th>المسؤولة</th><th>تاريخ البدء</th><th>تاريخ الانتهاء</th><th>الحالة</th><th>ملاحظات</th>
-  </tr>
-  <tr>
-    <td>مثال: مهمة توضيحية</td><td>هدى</td><td>01/05/2025</td><td>05/05/2025</td><td>جارية</td><td>-</td>
-  </tr>
-</table>
-
-    </section>
     <section>
       <h3>📎 رابط رفع الملفات:</h3>
       <p><a href="#">Google Drive</a></p>
     </section>
+
     <section>
-      <h3>💬 ملاحظات داخلية:</h3>
-      <p>هنا يمكن وضع ملاحظات أو نقاشات داخلية بين العضوات.</p>
+      <h3>👥 أسماء العضوات:</h3>
+      <ul id="membersList">
+        <li>هدى</li>
+        <li>رهف</li>
+      </ul>
     </section>
   </main>
   <footer>&copy; 2025 كتلة قبس</footer>

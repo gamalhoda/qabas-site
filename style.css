@@ -14,7 +14,6 @@ header, nav, footer {
 nav a {
   color: #FFD700;
   text-decoration: none;
-  font-weight: bold;
 }
 main {
   padding: 2rem;
@@ -22,7 +21,7 @@ main {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
   background-color: #004477;
 }
 th, td {
@@ -41,4 +40,25 @@ th {
   font-weight: bold;
   margin: 1rem 0;
   border-radius: 8px;
+}
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.form-row input, .form-row select {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  flex: 1 1 150px;
+}
+button {
+  background-color: #FFD700;
+  color: #002244;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
 }

@@ -11,25 +11,46 @@ header, nav, footer {
   text-align: center;
   padding: 1rem;
 }
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
 nav a {
-  margin: 0 1rem;
   color: #FFD700;
   text-decoration: none;
 }
 main {
   padding: 2rem;
 }
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #004477;
-  margin-top: 1rem;
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
-th, td {
+.dropbtn {
+  color: #FFD700;
+  cursor: pointer;
+  font-weight: bold;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #004477;
+  min-width: 200px;
+  z-index: 1;
   border: 1px solid #ccc;
-  padding: 0.5rem;
+  text-align: right;
 }
-th {
-  background: #FFD700;
-  color: #000;
+.dropdown-content a {
+  color: #fff;
+  padding: 10px;
+  display: block;
+  text-decoration: none;
+}
+.dropdown-content a:hover {
+  background-color: #005599;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
 }

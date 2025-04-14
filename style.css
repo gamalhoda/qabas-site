@@ -8,66 +8,70 @@ body {
 }
 header {
   background-color: #002244;
-  text-align: center;
-  padding: 2rem 1rem;
 }
-.logo {
-  width: 180px;
-  display: block;
-  margin: 0 auto 1rem;
+.topbar {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
 }
-h1 {
-  font-size: 1.8rem;
+.topbar img {
+  height: 60px;
+  margin-left: 1rem;
+}
+.topbar h1 {
+  font-size: 1.5rem;
   color: #FFD700;
+}
+nav {
+  display: flex;
+  gap: 1rem;
+  background-color: #004477;
+  padding: 0.75rem 1rem;
+  justify-content: center;
+}
+nav a, nav span {
+  color: #FFD700;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+.dropdown {
+  position: relative;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #005599;
+  padding: 0.5rem;
+  top: 100%;
+  right: 0;
+  border-radius: 5px;
+  min-width: 200px;
+}
+.dropdown-content a {
+  display: block;
+  padding: 0.5rem;
+  color: #fff;
+  text-decoration: none;
+}
+.dropdown-content a:hover {
+  background-color: #003399;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 main {
   padding: 2rem;
 }
-h2 {
+main h2 {
   color: #FFD700;
-  margin-top: 2rem;
 }
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1rem;
-  margin-top: 1rem;
-}
-.card {
-  background-color: #0055aa;
-  padding: 1rem;
-  border-radius: 10px;
-  text-align: center;
-  color: #FFD700;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s;
-}
-.card:hover {
-  background-color: #003399;
-}
-ul {
+main ul {
   list-style: none;
   padding: 0;
 }
-ul li {
+main li {
   margin: 0.5rem 0;
-}
-ul li a {
-  color: #FFD700;
-  text-decoration: none;
-}
-.admin-link {
-  margin-top: 2rem;
-  text-align: center;
-}
-.admin-link a {
-  background-color: #FFD700;
-  color: #002244;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
 }
 footer {
   background-color: #002244;

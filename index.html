@@ -3,50 +3,59 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>الرئيسية - كتلة قبس</title>
+  <title>كتلة قبس الطلابية</title>
   <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="شعار قبس" class="logo">
-    <h1>كتلة قبس الطلابية - جامعة حيفا</h1>
+    <div class="topbar">
+      <img src="logo.png" alt="شعار قبس">
+      <h1>كتلة قبس الطلابية - جامعة حيفا</h1>
+    </div>
+    <nav>
+      <a href="index.html">الرئيسية</a>
+      <div class="dropdown">
+        <span>اللجان ▾</span>
+        <div class="dropdown-content">
+          <a href="taqwiya.html">📚 دروس التقوية</a>
+          <a href="siyasiyya.html">🗳️ السياسية</a>
+          <a href="da3awiyya.html">🕋 الدعوية</a>
+          <a href="tasmeem.html">🎨 التصميم</a>
+          <a href="kitaba.html">✍️ الكتابة</a>
+          <a href="qawamees.html">📖 القواميس</a>
+          <a href="i3lamiyya.html">📢 الإعلامية</a>
+          <a href="jum3a.html">🕌 منشورات الجمعة</a>
+        </div>
+      </div>
+      <a href="ads.html">الإعلانات</a>
+      <a href="links.html">روابط خارجية</a>
+      <a href="#" onclick="enterAdmin()">صفحة الإدارة 🔒</a>
+    </nav>
   </header>
 
   <main>
     <section>
-      <h2>📣 مستجدات وإعلانات</h2>
-      <p>سيتم قريبًا تنظيم أمسية دعوية، لمزيد من التفاصيل راجعوا اللجنة الدعوية.</p>
+      <h2>من نحن؟</h2>
+      <p>كتلة قبس الطلابية هي مجموعة دعوية طلابية إسلامية، تعمل في جامعة حيفا وتسعى إلى تطوير الطالب العربي علميًا وثقافيًا وتربويًا.
+      تنطلق الكتلة من الإسلام كمنهج حياة، وتعمل على تعزيز الهوية الإسلامية العربية في أروقة الجامعة.
+      تهدف الكتلة إلى تقديم خدمات متنوعة، تنظيم مشاريع تثقيفية وخدماتية، وتوفير بيئة حاضنة لكل طالب مسلم.</p>
     </section>
 
     <section>
-      <h2>📂 اللجان</h2>
-      <div class="cards">
-        <a href="taqwiya.html" class="card">📚 لجنة دروس التقوية</a>
-        <a href="siyasiyya.html" class="card">🗳️ اللجنة السياسية</a>
-        <a href="da3awiyya.html" class="card">🕋 اللجنة الدعوية</a>
-        <a href="tasmeem.html" class="card">🎨 لجنة التصميم</a>
-        <a href="kitaba.html" class="card">✍️ لجنة الكتابة</a>
-        <a href="qawamees.html" class="card">📖 لجنة القواميس</a>
-        <a href="i3lamiyya.html" class="card">📢 اللجنة الإعلامية</a>
-        <a href="jum3a.html" class="card">🕌 لجنة منشورات الجمعة</a>
-      </div>
-    </section>
-
-    <section>
-      <h2>🗃️ ملفات عامة</h2>
-      <p><a href="#">رابط Google Drive المشترك</a></p>
-    </section>
-
-    <section>
-      <h2>🔗 روابط خارجية</h2>
+      <h2>📣 الإعلانات الأخيرة</h2>
       <ul>
-        <li><a href="#">📆 التقويم الجامعي</a></li>
-        <li><a href="#">📝 نموذج طلب نشاط</a></li>
+        <li>📌 أمسية دعوية يوم الأربعاء القادم</li>
+        <li>📌 ورشة كتابة إبداعية الثلاثاء</li>
       </ul>
     </section>
 
-    <section class="admin-link">
-      <a href="admin.html">🔒 منطقة الإدارة</a>
+    <section>
+      <h2>🎉 الفعاليات الحالية</h2>
+      <ul>
+        <li>⏳ حملة رمضان مستمرة حتى نهاية الشهر</li>
+        <li>🎨 معرض أعمال فنية في المكتبة الطلابية</li>
+      </ul>
     </section>
   </main>
 

@@ -1,0 +1,611 @@
+openapi: 3.0.0
+components:
+  examples: {}
+  headers: {}
+  parameters: {}
+  requestBodies: {}
+  responses: {}
+  schemas:
+    StorageDataContract:
+      properties:
+        version:
+          type: string
+        value: {}
+      required:
+        - value
+      type: object
+    JsonDataContract:
+      properties:
+        value: {}
+      required:
+        - value
+      type: object
+      additionalProperties: false
+    Period:
+      enum:
+        - DAILY
+        - MONTHLY
+        - YEARLY
+      type: string
+    IncrementStorageForKeyRequestBody:
+      properties:
+        kind:
+          type: string
+        renewalDate:
+          type: string
+          format: date-time
+        incrementBy:
+          type: number
+          format: double
+        period:
+          $ref: "#/components/schemas/Period"
+      required:
+        - kind
+        - renewalDate
+        - incrementBy
+        - period
+      type: object
+    SetSecretForKeyRequestBody:
+      properties:
+        value:
+          type: string
+      required:
+        - value
+      type: object
+    PublishMessageResponse:
+      properties:
+        id:
+          type: string
+      required:
+        - id
+      type: object
+    PublishMessageParams:
+      properties:
+        message:
+          type: string
+      required:
+        - message
+      type: object
+    ValidateSecretResponse:
+      properties:
+        valid:
+          type: boolean
+      required:
+        - valid
+      type: object
+    ValidateSecretParams:
+      properties:
+        secret:
+          type: string
+      required:
+        - secret
+      type: object
+    LogMethods:
+      enum:
+        - debug
+        - error
+        - warn
+        - info
+      type: string
+    Record_string.unknown_:
+      properties: {}
+      additionalProperties: {}
+      type: object
+      description: Construct a type with a set of properties K of type T
+    WriteLogRequestBody:
+      properties:
+        payload:
+          $ref: "#/components/schemas/Record_string.unknown_"
+        error:
+          anyOf:
+            - type: string
+            - $ref: "#/components/schemas/Record_string.unknown_"
+        message:
+          type: string
+        method:
+          $ref: "#/components/schemas/LogMethods"
+      required:
+        - message
+        - method
+      type: object
+  securitySchemes: {}
+info:
+  title: apps-sdk-local-server
+  version: 1.0.0
+  description: A local server to support the `apps-sdk` package local development
+  license:
+    name: MIT
+  contact:
+    name: monday.com Apps Team
+paths:
+  /storage/{key}:
+    get:
+      operationId: getByKeyFromStorage
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StorageDataContract"
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                properties:
+                  reason:
+                    type: string
+                required:
+                  - reason
+                type: object
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                properties:
+                  reason:
+                    type: string
+                type: object
+      tags:
+        - Storage
+      security: []
+      parameters:
+        - in: path
+          name: key
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: shared
+          required: true
+          schema:
+            type: boolean
+        - in: header
+          name: x-monday-access-token
+          required: true
+          schema:
+            type: string
+    delete:
+      operationId: deleteByKeyFromStorage
+      responses:
+        "204":
+          description: No Content
+      tags:
+        - Storage
+      security: []
+      parameters:
+        - in: header
+          name: x-monday-access-token
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: key
+          required: true
+          schema:
+            type: string
+    put:
+      operationId: upsertByKeyFromStorage
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - properties:
+                      error: {}
+                      success:
+                        type: boolean
+                      version:
+                        type: string
+                    required:
+                      - success
+                      - version
+                    type: object
+                  - properties:
+                      version: {}
+                      success:
+                        type: boolean
+                      error:
+                        type: string
+                    required:
+                      - success
+                      - error
+                    type: object
+      tags:
+        - Storage
+      security: []
+      parameters:
+        - in: header
+          name: x-monday-access-token
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: key
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: shared
+          required: false
+          schema:
+            type: boolean
+        - in: query
+          name: previousVersion
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: ttl
+          required: false
+          schema:
+            format: double
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JsonDataContract"
+  /storage/counter/increment:
+    put:
+      operationId: incrementCounter
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - properties:
+                      newCounterValue: {}
+                      message: {}
+                      success:
+                        type: boolean
+                      error:
+                        type: string
+                    required:
+                      - success
+                      - error
+                    type: object
+                  - properties:
+                      error: {}
+                      success:
+                        type: boolean
+                      newCounterValue:
+                        type: number
+                        format: double
+                      message:
+                        type: string
+                    required:
+                      - success
+                      - newCounterValue
+                      - message
+                    type: object
+      tags:
+        - Storage
+      security: []
+      parameters:
+        - in: header
+          name: x-monday-access-token
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/IncrementStorageForKeyRequestBody"
+  /storage/search/{term}:
+    get:
+      operationId: searchRecord
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                properties:
+                  reason:
+                    type: string
+                required:
+                  - reason
+                type: object
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                properties:
+                  reason:
+                    type: string
+                type: object
+      tags:
+        - Storage
+      security: []
+      parameters:
+        - in: path
+          name: term
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: x-monday-access-token
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: cursor
+          required: false
+          schema:
+            type: string
+  /secure-storage/{key}:
+    get:
+      operationId: getSecureStorage
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonDataContract"
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                properties:
+                  reason:
+                    type: string
+                required:
+                  - reason
+                type: object
+      tags:
+        - SecureStorage
+      security: []
+      parameters:
+        - in: path
+          name: key
+          required: true
+          schema:
+            type: string
+    delete:
+      operationId: deleteSecureStorage
+      responses:
+        "204":
+          description: No Content
+      tags:
+        - SecureStorage
+      security: []
+      parameters:
+        - in: path
+          name: key
+          required: true
+          schema:
+            type: string
+    put:
+      operationId: putSecureStorage
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: boolean
+      tags:
+        - SecureStorage
+      security: []
+      parameters:
+        - in: path
+          name: key
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JsonDataContract"
+  /secrets/{name}:
+    get:
+      operationId: getSecret
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                properties:
+                  reason:
+                    type: string
+                required:
+                  - reason
+                type: object
+      tags:
+        - Secret
+      security: []
+      parameters:
+        - in: path
+          name: name
+          required: true
+          schema:
+            type: string
+  /secrets:
+    get:
+      operationId: getSecretKeys
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+      tags:
+        - Secret
+      security: []
+      parameters: []
+  /test/secrets/{name}:
+    put:
+      operationId: setSecretTestRoute
+      responses:
+        "204":
+          description: No Content
+      tags:
+        - TestRoutes
+      security: []
+      parameters:
+        - in: path
+          name: name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SetSecretForKeyRequestBody"
+  /queue:
+    post:
+      operationId: publishMessage
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PublishMessageResponse"
+      tags:
+        - Queue
+      security: []
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PublishMessageParams"
+  /queue/validate-secret:
+    post:
+      operationId: validateSecret
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidateSecretResponse"
+      tags:
+        - Queue
+      security: []
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ValidateSecretParams"
+  /logs:
+    post:
+      operationId: writeLog
+      responses:
+        "204":
+          description: No Content
+      tags:
+        - Logs
+      security: []
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WriteLogRequestBody"
+  /environment-variables/{name}:
+    get:
+      operationId: getEnvironmentVariable
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema: {}
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                properties:
+                  reason:
+                    type: string
+                required:
+                  - reason
+                type: object
+      tags:
+        - EnvironmentVariables
+      security: []
+      parameters:
+        - in: path
+          name: name
+          required: true
+          schema:
+            type: string
+  /environment-variables:
+    get:
+      operationId: getEnvironmentVariableKeys
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+      tags:
+        - EnvironmentVariables
+      security: []
+      parameters: []
+  /test/environments/{name}:
+    put:
+      operationId: setEnvironmentTestRoute
+      responses:
+        "204":
+          description: No Content
+      tags:
+        - TestRoutes
+      security: []
+      parameters:
+        - in: path
+          name: name
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JsonDataContract"
+servers:
+  - url: http://localhost:59999
+    description: monday-code Local dev server

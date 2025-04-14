@@ -14,8 +14,8 @@
     <p class="note">🔐 يتم تعيين المسؤولة من قِبل الإدارة</p>
 
     <section>
-      <h2>📋 المهام</h2>
-      <table id="taskTable">
+      <h2>📋 المهام الحالية</h2>
+      <table id="mainTaskTable">
         <thead>
           <tr>
             <th>المهمة</th>
@@ -29,6 +29,7 @@
         </thead>
         <tbody></tbody>
       </table>
+
       <div class="form-row">
         <input type="text" id="task" placeholder="المهمة">
         <input type="text" id="person" placeholder="المسؤولة">
@@ -45,16 +46,9 @@
     </section>
 
     <section>
-      <h3>📎 رابط رفع الملفات:</h3>
-      <p><a href="#">Google Drive</a></p>
-    </section>
-
-    <section>
-      <h3>👥 أسماء العضوات:</h3>
-      <ul id="membersList">
-        <li>هدى</li>
-        <li>رهف</li>
-      </ul>
+      <h2>➕ إنشاء جدول جديد</h2>
+      <button onclick="addNewTable()">➕ أضف جدول جديد</button>
+      <div id="newTablesArea"></div>
     </section>
   </main>
   <footer>&copy; 2025 كتلة قبس</footer>

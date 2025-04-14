@@ -11,46 +11,64 @@
   <header><h1>📚 لجنة دروس التقوية</h1></header>
   <nav><a href="index.html">↩ العودة للرئيسية</a></nav>
   <main>
-    <p class="note">🔐 يتم تعيين المسؤولة من قِبل الإدارة</p>
+    <section>
+      <h2>✅ مقدمة اللجنة</h2>
+      <p>👩‍💼 اسم اللجنة: لجنة دروس التقوية</p>
+      <p>👩‍👧 اسم المسؤولة: ..................</p>
+      <p>👥 الأعضاء: ..................</p>
+      <p>🎯 أهداف الفصل: ..................</p>
+    </section>
 
     <section>
-      <h2>📋 المهام الحالية</h2>
-      <table id="mainTaskTable">
+      <h2>📋 جدول المهام الجارية</h2>
+      <table id="tasksTable">
         <thead>
-          <tr>
-            <th>المهمة</th>
-            <th>المسؤولة</th>
-            <th>تاريخ البدء</th>
-            <th>تاريخ الانتهاء</th>
-            <th>الحالة</th>
-            <th>ملاحظات</th>
-            <th>🗑️</th>
-          </tr>
+          <tr><th>المهمة</th><th>المسؤولة</th><th>تاريخ التنفيذ</th><th>الحالة</th><th>ملاحظات</th><th>🗑️</th></tr>
         </thead>
         <tbody></tbody>
       </table>
-
-      <div class="form-row">
-        <input type="text" id="task" placeholder="المهمة">
-        <input type="text" id="person" placeholder="المسؤولة">
-        <input type="date" id="start">
-        <input type="date" id="end">
-        <select id="status">
-          <option>لم يبدأ</option>
-          <option>جارية</option>
-          <option>تم</option>
-        </select>
-        <input type="text" id="notes" placeholder="ملاحظات">
-        <button onclick="addTask()">➕ أضف</button>
-      </div>
+      <button onclick="addRow('tasksTable')">➕ أضف صف</button>
     </section>
 
     <section>
-      <h2>➕ إنشاء جدول جديد</h2>
-      <button onclick="addNewTable()">➕ أضف جدول جديد</button>
-      <div id="newTablesArea"></div>
+      <h2>🗃️ مجلدات وملفات اللجنة</h2>
+      <ul>
+        <li><a href="#">📁 مجلد التصاميم</a></li>
+        <li><a href="#">📁 مجلد المحتوى</a></li>
+        <li><a href="#">📁 مجلد التقارير</a></li>
+        <li><a href="#">📁 مجلد الأفكار</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>💡 سجل الاقتراحات</h2>
+      <table id="suggestionsTable">
+        <thead>
+          <tr><th>من اقترح؟</th><th>الفكرة</th><th>تم التشاور؟</th><th>القرار</th><th>ملاحظات</th><th>🗑️</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <button onclick="addRow('suggestionsTable')">➕ أضف صف</button>
+    </section>
+
+    <section>
+      <h2>📝 تقارير اللجنة</h2>
+      <ul>
+        <li><a href="#">📄 رفع تقرير جديد</a></li>
+        <li><a href="#">📄 تقرير شهر أبريل</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>📒 ملاحظات المسؤولة</h2>
+      <textarea placeholder="اكتبي الملاحظات هنا..." rows="5" style="width: 100%;"></textarea>
+    </section>
+
+    <section>
+      <h2>✨ مساحة الإلهام</h2>
+      <p>💡 أضيفي اقتباسات أو صور تحفيزية هنا.</p>
     </section>
   </main>
-  <footer>&copy; 2025 كتلة قبس</footer>
+  <footer>&copy; 2025 كتلة قبس - جميع الحقوق محفوظة</footer>
 </body>
 </html>

@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>تسجيل الدخول - اللجنة السياسية</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function checkPassword() {
+      const input = document.getElementById("pass").value;
+      if (input === "SY2025") {
+        window.location.href = "siyasiyya.html";
+      } else {
+        alert("❌ الرمز غير صحيح");
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="login-box">
+    <h2>🔐 تسجيل الدخول - اللجنة السياسية</h2>
+    <input type="text" id="pass" placeholder="أدخلي رمز الدخول">
+    <button onclick="checkPassword()">دخول</button>
+  </div>
+</body>
+</html>

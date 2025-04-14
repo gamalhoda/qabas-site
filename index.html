@@ -3,54 +3,63 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>الرئيسية - كتلة قبس الطلابية</title>
+  <title>كتلة قبس الطلابية - الرئيسية</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <script defer src="script.js"></script>
 </head>
-<body>
-  <header>
-    <div class="topbar">
-      <img src="logo.png" alt="شعار قبس">
-      <h1>كتلة قبس الطلابية - جامعة حيفا</h1>
-    </div>
-    <nav>
-      <a href="index.html">الرئيسية</a>
-      <div class="dropdown">
-        <span>اللجان ▾</span>
-        <div class="dropdown-content">
-          <a href="login-taqwiya.html">📚 دروس التقوية</a>
-          <a href="login-da3awiyya.html">🕋 الدعوية</a>
-          <a href="login-siyasiyya.html">🗳️ السياسية</a>
-          <a href="login-kitaba.html">✍️ الكتابة</a>
-          <a href="login-tasmeem.html">🎨 التصميم</a>
-          <a href="login-i3lamiyya.html">📢 الإعلامية</a>
-          <a href="login-qawamees.html">📖 القواميس</a>
-          <a href="login-jum3a.html">🕌 منشورات الجمعة</a>
-        </div>
-      </div>
-      <a href="ads.html">الإعلانات</a>
-      <a href="links.html">روابط خارجية</a>
-      <a href="#" onclick="enterAdmin()">صفحة الإدارة 🔒</a>
-    </nav>
+<body class="bg-light text-dark">
+  <header class="bg-primary text-white p-3 text-center">
+    <img src="logo.png" alt="شعار قبس" style="height: 80px;">
+    <h1 class="mt-2">كتلة قبس الطلابية - جامعة حيفا</h1>
   </header>
 
-  <main>
-    <section>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">قبس</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">الرئيسية</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">اللجان</a>
+            <ul class="dropdown-menu text-end">
+              <li><a class="dropdown-item" href="login-taqwiya.html">📚 دروس التقوية</a></li>
+              <li><a class="dropdown-item" href="login-da3awiyya.html">🕋 الدعوية</a></li>
+              <li><a class="dropdown-item" href="login-siyasiyya.html">🗳️ السياسية</a></li>
+              <li><a class="dropdown-item" href="login-kitaba.html">✍️ الكتابة</a></li>
+              <li><a class="dropdown-item" href="login-tasmeem.html">🎨 التصميم</a></li>
+              <li><a class="dropdown-item" href="login-i3lamiyya.html">📢 الإعلامية</a></li>
+              <li><a class="dropdown-item" href="login-qawamees.html">📖 القواميس</a></li>
+              <li><a class="dropdown-item" href="login-jum3a.html">🕌 منشورات الجمعة</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="ads.html">الإعلانات</a></li>
+          <li class="nav-item"><a class="nav-link" href="links.html">روابط خارجية</a></li>
+          <li class="nav-item"><a class="nav-link" href="#" onclick="enterAdmin()">صفحة الإدارة 🔒</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container mt-5">
+    <section class="mb-5">
       <h2>من نحن؟</h2>
-      <p>كتلة قبس الطلابية هي مجموعة دعوية طلابية إسلامية، تعمل في جامعة حيفا وتسعى إلى تطوير الطالب العربي علميًا وثقافيًا وتربويًا.
-      تنطلق الكتلة من الإسلام كمنهج حياة، وتعمل على تعزيز الهوية الإسلامية العربية في أروقة الجامعة.
-      تهدف الكتلة إلى تقديم خدمات متنوعة، تنظيم مشاريع تثقيفية وخدماتية، وتوفير بيئة حاضنة لكل طالب مسلم.</p>
+      <p>كتلة دعوية طلابية إسلامية في جامعة حيفا، تسعى لتطوير الطالب علميًا وثقافيًا وتربويًا، وتعزيز الهوية الإسلامية العربية.</p>
     </section>
 
-    <section>
+    <section class="mb-4">
       <h2>📣 الإعلانات الأخيرة</h2>
       <ul>
-        <li>📌 أمسية دعوية يوم الأربعاء القادم</li>
+        <li>📌 أمسية دعوية الأربعاء القادم</li>
         <li>📌 ورشة كتابة إبداعية الثلاثاء</li>
       </ul>
     </section>
 
-    <section>
+    <section class="mb-4">
       <h2>🎉 الفعاليات الحالية</h2>
       <ul>
         <li>⏳ حملة رمضان مستمرة حتى نهاية الشهر</li>
@@ -59,8 +68,10 @@
     </section>
   </main>
 
-  <footer>
+  <footer class="bg-dark text-white text-center p-3 mt-5">
     &copy; 2025 كتلة قبس - جميع الحقوق محفوظة
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
